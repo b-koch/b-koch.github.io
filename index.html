@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://apis.google.com/js/platform.js"></script>
+    <script>
+      window.onLoadCallback = function(){
+        gapi.auth2.init({
+            client_id: 'filler_text_for_client_id.apps.googleusercontent.com'
+          });
+          
+      }
+      </script>
     <meta name="google-signin-client_id" content="810587128183-nhfjsqk3gkmd2dbdheffqlo6fa05rsk7.apps.googleusercontent.com">
     <title>Document</title>
 </head>
@@ -17,6 +25,8 @@
         console.log('Name: ' + profile.getName());
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        
+
         }
     </script>
     <a href="#" onclick="signOut();">Sign out</a>
@@ -27,7 +37,12 @@
           console.log('User signed out.');
         });
       }
-    </script
+    </script>
 
+    <script>
+      var GoogleUser = GoogleAuth.currentUser.get();
+        console.log(GoogleUser.isSignedIn());
+      
+    </script>
 </body>
 </html>
